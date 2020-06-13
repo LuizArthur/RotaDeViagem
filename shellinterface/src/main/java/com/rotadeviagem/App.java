@@ -2,8 +2,14 @@ package com.rotadeviagem;
 
 public class App 
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
-        System.out.println(System.getProperty("user.dir"));
+        try {
+            final String pathRotas = Inputs.getPathRotas(args);
+            System.out.println(pathRotas);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

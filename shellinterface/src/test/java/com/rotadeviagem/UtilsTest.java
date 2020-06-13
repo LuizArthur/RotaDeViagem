@@ -1,7 +1,6 @@
 package com.rotadeviagem;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,5 +28,9 @@ public class UtilsTest {
 
         assertEquals(false, FileUtils.checkExistance(filePathStr));
     }
-    
+
+    @Test(expected = NullPointerException.class)
+    public void FileUtilsWithNullParameter() {
+        boolean exists = FileUtils.checkExistance(null);
+    }    
 }
