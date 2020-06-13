@@ -3,7 +3,7 @@ package com.rotadeviagem.utils;
 import java.io.File;
 
 public class FileUtils {
-    public static boolean checkExistance(String path) throws NullPointerException {
+    public static boolean checkExistance(final String path) throws NullPointerException {
         if(path == null) {
             throw new NullPointerException("Path fornecido como parâmetro é null");
         }
