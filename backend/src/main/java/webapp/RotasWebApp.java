@@ -1,6 +1,5 @@
 package webapp;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -34,13 +33,10 @@ public class RotasWebApp extends HttpServlet {
     }
     
     private InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
-        final String departureAirport = request.getParameter("departureAirport");
-        final String arrivalAirport = request.getParameter("arrivalAirport");
+        final String departureAirportCode = request.getParameter("departureAirportCode");
+        final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
         final String cost = request.getParameter("cost");
-
-        System.out.println(departureAirport);
-        System.out.println(arrivalAirport);
-        System.out.println(cost);
+        final String inputsPath = request.getParameter("inputsPath");
 
         return null;
     }
