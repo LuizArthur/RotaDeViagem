@@ -63,25 +63,12 @@ public class RouteService implements IRouteService {
 
     @Override
     public Route insert(
-        final String departureAiportCode,
-        final String arrivalAirportCode,
+        final Airport departureAirport,
+        final Airport arrivalAirport,
         final String cost,
         final List<Route> routes,
         final String inputsPath
     ) throws DomainRuleException {
-        final Airport departureAirport = new Airport(departureAiportCode);
-        final Airport arrivalAirport = new Airport(arrivalAirportCode);
-
-        final SpecificationResult departureAirportSpec = departureAirport.isValid();
-        if(!departureAirportSpec.isValid()) {
-            throw new DomainRuleException(departureAirportSpec.getMessage());
-        }
-
-        final SpecificationResult arrivalAirportSpec = arrivalAirport.isValid();
-        if(!arrivalAirportSpec.isValid()) {
-            throw new DomainRuleException(arrivalAirportSpec.getMessage());
-        }
-
         final Route route = new Route(departureAirport, arrivalAirport, cost);
         final SpecificationResult rotaSpecification = route.isValid();
         if (!rotaSpecification.isValid()) {
