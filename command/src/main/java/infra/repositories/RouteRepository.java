@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import domain.entities.Airport;
 import domain.entities.Route;
-import utils.FileUtils;
+import infra.services.FileService;
 
 public class RouteRepository implements IRouteRepository {
 
@@ -27,7 +27,7 @@ public class RouteRepository implements IRouteRepository {
     @Override
     public List<Route> getAll(final String inputsPath) {
         try {
-            final List<String> linesList = FileUtils.read(inputsPath);
+            final List<String> linesList = FileService.read(inputsPath);
 
             return linesToRotas(linesList);
         } catch (final Exception e) {
@@ -45,7 +45,7 @@ public class RouteRepository implements IRouteRepository {
             route.getCost());
 
         
-        final boolean isWritten = FileUtils.write(text, true, inputsPath);
+        final boolean isWritten = FileService.write(text, true, inputsPath);
         
         return isWritten;
     }

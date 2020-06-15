@@ -11,42 +11,35 @@ import javax.servlet.http.HttpServletResponse;
 
 import application.RouteAppService;
 import domain.entities.Route;
-import dto.InsertRotasDto;
+import webapp.dto.InsertRotasAdapater;
+import webapp.utils.JsonUtils;
 
 @WebServlet("/rotas")
-public class RotasWebApp extends HttpServlet {
+public class RotasWebApp<InsertRotasDto> extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final RouteAppService routeAppService = new RouteAppService();
-       
-	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
-            throws ServletException, IOException {
-
-        final InsertRotasDto insertRotasDto = insertRotas(request, response);
-
-        final PrintWriter out = response.getWriter();
-        out.println("Hello from Servlet");
-    }
 
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
-        final InsertRotasDto insertRotasDto = insertRotas(request, response);
+        final webapp.dto.InsertRotasDto insertRotasDto = insertRotas(request, response);
 
         final PrintWriter out = response.getWriter();        
-        out.println("Hello from ");
+        out.println(JsonUtils.classToJson(insertRotasDto));
     }
     
-    private InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
+    private webapp.dto.InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
+    	final InsertRotasAdapater adapter = new InsertRotasAdapater();
         try {
             final String departureAirportCode = request.getParameter("departureAirportCode");
             final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
             final String cost = request.getParameter("cost");
             final String inputsPath = request.getParameter("inputsPath");
 
-            Route route = routeAppService.insert(departureAirportCode, arrivalAirportCode, cost, inputsPath);
+            final Route route = routeAppService.insert(departureAirportCode, arrivalAirportCode, cost, inputsPath);            
 
-            return null;
+            return adapter.RouteToDto(route);
         } catch (Exception e) {
-            return null;
+            return adapter.RouteToDto(e);
         }
     }
 

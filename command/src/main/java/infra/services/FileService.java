@@ -1,4 +1,4 @@
-package utils;
+package infra.services;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileUtils {
+public class FileService {
     public static List<String> read(String filePath) {
         try {
             final File file = new File(filePath);
