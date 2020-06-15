@@ -11,18 +11,18 @@ import domain.specifications.DepartureAirportNotNullSpecification;
 import domain.specifications.ISpecification;
 import domain.specifications.SpecificationResult;
 
-public class Rota extends EntityBase{
+public class Route extends EntityBase{
     private Airport departureAirport;
     private Airport arrivalAirport;
     private Integer cost;
 
-    public Rota(final Airport departureAirport, final Airport arrivalAirport, final String cost) {
+    public Route(final Airport departureAirport, final Airport arrivalAirport, final String cost) {
         this.setDepartureAirport(departureAirport);
         this.setArrivalAirport(arrivalAirport);
         this.setCost(cost);
     }
     
-    public Rota(final Airport departureAirport, final Airport arrivalAirport, final Integer cost) {
+    public Route(final Airport departureAirport, final Airport arrivalAirport, final Integer cost) {
         this.setDepartureAirport(departureAirport);
         this.setArrivalAirport(arrivalAirport);
         this.setCost(cost);
@@ -62,7 +62,7 @@ public class Rota extends EntityBase{
 
     @Override
     public SpecificationResult isValid() {
-        List<ISpecification<Rota>> specs = Arrays.asList(
+        List<ISpecification<Route>> specs = Arrays.asList(
             new ArrivalAirportNotNullSpecification(),
             new CostIsNotNullSpecification(),
             new DepartureAirportNotNullSpecification(),

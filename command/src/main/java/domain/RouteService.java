@@ -7,48 +7,48 @@ import java.util.stream.Collectors;
 
 import domain.exceptions.DomainRuleException;
 import domain.specifications.SpecificationResult;
-import infra.repositories.IRotaRepository;
-import infra.repositories.RotaRepository;
+import infra.repositories.IRouteRepository;
+import infra.repositories.RouteRepository;
 
-public class RotaService implements IRotaService {
+public class RouteService implements IRouteService {
 
-    final private IRotaRepository rotaRepository;
+    final private IRouteRepository routeRepository;
 
-    private IRotaRepository getRotaRepository() {
-        return rotaRepository;
+    private IRouteRepository getRotaRepository() {
+        return routeRepository;
     }
 
-    public RotaService() {
-        this.rotaRepository = (IRotaRepository) new RotaRepository();
+    public RouteService() {
+        this.routeRepository = (IRouteRepository) new RouteRepository();
     }    
 
     @Override
-    public List<Rota> getAll(final String inputsPath) throws DomainRuleException {
+    public List<Route> getAll(final String inputsPath) throws DomainRuleException {
         if(inputsPath == null) {
             throw new DomainRuleException("O caminho do input não foi fornecido corretamente");
         }
 
-        final List<Rota> rotas = this.getRotaRepository().getAll(inputsPath);
-        if(rotas == null) {
+        final List<Route> routes = this.getRotaRepository().getAll(inputsPath);
+        if(routes == null) {
             throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
         }
 
-        return rotas;
+        return routes;
     }
 
-    private boolean checkIfExists(final Rota rota, final List<Rota> rotas) {
+    private boolean checkIfExists(final Route route, final List<Route> routes) {
         final Set<String> rotasSet = new HashSet<String>(
-            rotas
+            routes
             .stream()
             .map(x -> String.format("%s-%s", x.getDepartureAirport().getIataCode(), x.getArrivalAirport().getIataCode()))
             .collect(Collectors.toList())
         );
 
-        return rotasSet.contains(String.format("%s-%s", rota.getDepartureAirport().getIataCode(), rota.getArrivalAirport().getIataCode()));
+        return rotasSet.contains(String.format("%s-%s", route.getDepartureAirport().getIataCode(), route.getArrivalAirport().getIataCode()));
     }
 
     @Override
-    public Rota insert(
+    public Route insert(
         final String departureAiportCode,
         final String arrivalAirportCode,
         final String cost,
@@ -67,24 +67,24 @@ public class RotaService implements IRotaService {
             throw new DomainRuleException(arrivalAirportSpec.getMessage());
         }
 
-        final Rota rota = new Rota(departureAirport, arrivalAirport, cost);
-        final SpecificationResult rotaSpecification = rota.isValid();
+        final Route route = new Route(departureAirport, arrivalAirport, cost);
+        final SpecificationResult rotaSpecification = route.isValid();
         if (!rotaSpecification.isValid()) {
             throw new DomainRuleException(rotaSpecification.getMessage());
         }
 
-        final List<Rota> rotas = this.getAll(inputsPath);
-        final boolean rotaExists = checkIfExists(rota, rotas);
+        final List<Route> routes = this.getAll(inputsPath);
+        final boolean rotaExists = checkIfExists(route, routes);
         if(rotaExists) {
             throw new DomainRuleException("Rota já existe no arquivo de input");
         }
 
-        final boolean isInserted = this.getRotaRepository().insert(rota, inputsPath);
+        final boolean isInserted = this.getRotaRepository().insert(route, inputsPath);
         if(!isInserted) {
             throw new DomainRuleException("Nã foi possível inserir a rota no arquivo de inputs");
         }
         
-        return rota;
+        return route;
     }
     
 }

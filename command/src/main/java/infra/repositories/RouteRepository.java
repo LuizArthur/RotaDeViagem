@@ -5,27 +5,27 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import domain.Airport;
-import domain.Rota;
+import domain.Route;
 import utils.FileUtils;
 
-public class RotaRepository implements IRotaRepository {
+public class RouteRepository implements IRouteRepository {
 
-    private List<Rota> linesToRotas(final List<String> linesList) {
+    private List<Route> linesToRotas(final List<String> linesList) {
         try {
-            final List<Rota> rotas = new ArrayList<Rota>();
+            final List<Route> routes = new ArrayList<Route>();
             final List<String[]> linesFormated = linesList.stream().map(x -> x.replaceAll(" ", "").split(","))
                     .collect(Collectors.toList());
 
-            linesFormated.forEach(x -> rotas.add(new Rota(new Airport(x[0]), new Airport(x[1]), x[2])));
+            linesFormated.forEach(x -> routes.add(new Route(new Airport(x[0]), new Airport(x[1]), x[2])));
 
-            return rotas;
+            return routes;
         } catch (final Exception e) {
             return null;
         }
     }
 
     @Override
-    public List<Rota> getAll(final String inputsPath) {
+    public List<Route> getAll(final String inputsPath) {
         try {
             final List<String> linesList = FileUtils.read(inputsPath);
 
@@ -36,13 +36,13 @@ public class RotaRepository implements IRotaRepository {
     }
 
     @Override
-    public boolean insert(final Rota rota, final String inputsPath) {
+    public boolean insert(final Route route, final String inputsPath) {
         final String text = String
                 .format(
             "\n%s,%s,%s",
-            rota.getDepartureAirport().getIataCode(),
-            rota.getArrivalAirport().getIataCode(),
-            rota.getCost());
+            route.getDepartureAirport().getIataCode(),
+            route.getArrivalAirport().getIataCode(),
+            route.getCost());
 
         
         final boolean isWritten = FileUtils.write(text, true, inputsPath);

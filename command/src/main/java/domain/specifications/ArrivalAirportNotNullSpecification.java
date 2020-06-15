@@ -1,12 +1,12 @@
 package domain.specifications;
 
 import domain.Airport;
-import domain.Rota;
+import domain.Route;
 
-public class ArrivalAirportNotNullSpecification implements ISpecification<Rota> {
+public class ArrivalAirportNotNullSpecification implements ISpecification<Route> {
 
     @Override
-    public SpecificationResult isSatisfiedBy(final Rota entity) {
+    public SpecificationResult isSatisfiedBy(final Route entity) {
         final Airport arrivalAirport = entity.getArrivalAirport();
         if(arrivalAirport == null) {
             return new SpecificationResult(false, "Rota não possui aeroporto de chegada");
