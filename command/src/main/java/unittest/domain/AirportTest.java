@@ -25,4 +25,41 @@ public class AirportTest {
 		Assert.assertFalse(airportSpec.isValid());
 		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
 	}
+	
+	@Test
+	public void AiportIataCodeWithLengthBiggerThan3() {
+		final Airport airport = new Airport("LAXD");
+		final SpecificationResult airportSpec = airport.isValid();
+		
+		Assert.assertFalse(airportSpec.isValid());
+		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+	}
+	
+	@Test
+	public void AiportIataCodeWithLengthLessThan3() {
+		final Airport airport = new Airport("LA");
+		final SpecificationResult airportSpec = airport.isValid();
+		
+		Assert.assertFalse(airportSpec.isValid());
+		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+	}
+	
+	@Test
+	public void AiportIataCodeWithLength0() {
+		final Airport airport = new Airport("");
+		final SpecificationResult airportSpec = airport.isValid();
+		
+		Assert.assertFalse(airportSpec.isValid());
+		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+	}
+	
+	@Test
+	public void AiportIataCodeNull() {
+		final Airport airport = new Airport(null);
+		final SpecificationResult airportSpec = airport.isValid();
+		
+		Assert.assertFalse(airportSpec.isValid());
+		Assert.assertEquals(airportSpec.getMessage(), "O Código do aeroporto fornecido é nulo");
+	}
+	
 }

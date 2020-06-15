@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import domain.specifications.ArrivalAirportNotNullSpecification;
+import domain.specifications.CostIsNotNegativeSpecification;
 import domain.specifications.CostIsNotNullSpecification;
 import domain.specifications.DepartureAirportNotNullSpecification;
 import domain.specifications.ISpecification;
@@ -16,6 +17,12 @@ public class Rota extends EntityBase{
     private Integer cost;
 
     public Rota(final Airport departureAirport, final Airport arrivalAirport, final String cost) {
+        this.setDepartureAirport(departureAirport);
+        this.setArrivalAirport(arrivalAirport);
+        this.setCost(cost);
+    }
+    
+    public Rota(final Airport departureAirport, final Airport arrivalAirport, final Integer cost) {
         this.setDepartureAirport(departureAirport);
         this.setArrivalAirport(arrivalAirport);
         this.setCost(cost);
@@ -58,7 +65,8 @@ public class Rota extends EntityBase{
         List<ISpecification<Rota>> specs = Arrays.asList(
             new ArrivalAirportNotNullSpecification(),
             new CostIsNotNullSpecification(),
-            new DepartureAirportNotNullSpecification()
+            new DepartureAirportNotNullSpecification(),
+            new CostIsNotNegativeSpecification()
         );
 
         Optional <SpecificationResult> firstError =
