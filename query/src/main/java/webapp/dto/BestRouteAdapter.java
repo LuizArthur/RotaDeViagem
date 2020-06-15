@@ -1,5 +1,6 @@
 package webapp.dto;
 
+import domain.vobjects.BestRoute;
 import webapp.utils.JsonUtils;
 
 public class BestRouteAdapter {
