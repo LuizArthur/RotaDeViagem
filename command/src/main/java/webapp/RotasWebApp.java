@@ -32,7 +32,7 @@ public class RotasWebApp extends HttpServlet {
         final InsertRotasDto insertRotasDto = insertRotas(request, response);
 
         final PrintWriter out = response.getWriter();        
-        out.println("Hello from Servlet");
+        out.println("Hello from ");
     }
     
     private InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
