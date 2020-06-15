@@ -4,39 +4,37 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import domain.specifications.ArrivalAirportCodeNotNullSpecification;
-import domain.specifications.ArrivalAirportCodePatternSpecification;
+import domain.specifications.ArrivalAirportNotNullSpecification;
 import domain.specifications.CostIsNotNullSpecification;
-import domain.specifications.DepartureAirportCodeNotNullSpecification;
-import domain.specifications.DepartureAirportCodePatternSpecification;
+import domain.specifications.DepartureAirportNotNullSpecification;
 import domain.specifications.ISpecification;
 import domain.specifications.SpecificationResult;
 
 public class Rota extends EntityBase{
-    private String departureAirportCode;
-    private String arrivalAirportCode;
+    private Airport departureAirport;
+    private Airport arrivalAirport;
     private Integer cost;
 
-    public Rota(final String departureAirportCode, final String arrivalAirportCode, final String cost) {
-        this.setDepartureAirportCode(departureAirportCode);
-        this.setArrivalAirportCode(arrivalAirportCode);
+    public Rota(final Airport departureAirport, final Airport arrivalAirport, final String cost) {
+        this.setDepartureAirport(departureAirport);
+        this.setArrivalAirport(arrivalAirport);
         this.setCost(cost);
     }
 
-    public String getDepartureAirportCode() {
-        return departureAirportCode;
+    public Airport getDepartureAirport() {
+        return departureAirport;
     }
 
-    public void setDepartureAirportCode(String departureAirportCode) {
-        this.departureAirportCode = departureAirportCode;
+    public void setDepartureAirport(final Airport departureAirport) {
+        this.departureAirport = departureAirport;
     }
 
-    public String getArrivalAirportCode() {
-        return arrivalAirportCode;
+    public Airport getArrivalAirport() {
+        return arrivalAirport;
     }
 
-    public void setArrivalAirportCode(String arrivalAirportCode) {
-        this.arrivalAirportCode = arrivalAirportCode;
+    public void setArrivalAirport(Airport arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
     }
 
     public Integer getCost() {
@@ -58,11 +56,9 @@ public class Rota extends EntityBase{
     @Override
     public SpecificationResult isValid() {
         List<ISpecification<Rota>> specs = Arrays.asList(
-            new ArrivalAirportCodeNotNullSpecification(),
+            new ArrivalAirportNotNullSpecification(),
             new CostIsNotNullSpecification(),
-            new DepartureAirportCodeNotNullSpecification(),
-            new ArrivalAirportCodePatternSpecification(),
-            new DepartureAirportCodePatternSpecification()
+            new DepartureAirportNotNullSpecification()
         );
 
         Optional <SpecificationResult> firstError =

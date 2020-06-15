@@ -40,11 +40,11 @@ public class RotaService implements IRotaService {
         final Set<String> rotasSet = new HashSet<String>(
             rotas
             .stream()
-            .map(x -> String.format("%s-%s", x.getDepartureAirportCode(), x.getArrivalAirportCode()))
+            .map(x -> String.format("%s-%s", x.getDepartureAirport().getIataCode(), x.getArrivalAirport().getIataCode()))
             .collect(Collectors.toList())
         );
 
-        return rotasSet.contains(String.format("%s-%s", rota.getDepartureAirportCode(), rota.getArrivalAirportCode()));
+        return rotasSet.contains(String.format("%s-%s", rota.getDepartureAirport().getIataCode(), rota.getArrivalAirport().getIataCode()));
     }
 
     @Override
@@ -54,7 +54,20 @@ public class RotaService implements IRotaService {
         final String cost,
         final String inputsPath
     ) throws DomainRuleException {
-        final Rota rota = new Rota(departureAiportCode, arrivalAirportCode, cost);
+        final Airport departureAirport = new Airport(departureAiportCode);
+        final Airport arrivalAirport = new Airport(arrivalAirportCode);
+
+        final SpecificationResult departureAirportSpec = departureAirport.isValid();
+        if(!departureAirportSpec.isValid()) {
+            throw new DomainRuleException(departureAirportSpec.getMessage());
+        }
+
+        final SpecificationResult arrivalAirportSpec = arrivalAirport.isValid();
+        if(!arrivalAirportSpec.isValid()) {
+            throw new DomainRuleException(arrivalAirportSpec.getMessage());
+        }
+
+        final Rota rota = new Rota(departureAirport, arrivalAirport, cost);
         final SpecificationResult rotaSpecification = rota.isValid();
         if (!rotaSpecification.isValid()) {
             throw new DomainRuleException(rotaSpecification.getMessage());

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import domain.Airport;
 import domain.Rota;
 import utils.FileUtils;
 
@@ -15,7 +16,7 @@ public class RotaRepository implements IRotaRepository {
             final List<String[]> linesFormated = linesList.stream().map(x -> x.replaceAll(" ", "").split(","))
                     .collect(Collectors.toList());
 
-            linesFormated.forEach(x -> rotas.add(new Rota(x[0], x[1], x[2])));
+            linesFormated.forEach(x -> rotas.add(new Rota(new Airport(x[0]), new Airport(x[1]), x[2])));
 
             return rotas;
         } catch (final Exception e) {
@@ -39,8 +40,8 @@ public class RotaRepository implements IRotaRepository {
         final String text = String
                 .format(
             "\n%s,%s,%s",
-            rota.getDepartureAirportCode(),
-            rota.getArrivalAirportCode(),
+            rota.getDepartureAirport().getIataCode(),
+            rota.getArrivalAirport().getIataCode(),
             rota.getCost());
 
         
