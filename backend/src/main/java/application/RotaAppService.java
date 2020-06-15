@@ -1,10 +1,9 @@
 package application;
 
-import java.util.List;
-
 import domain.IRotaService;
 import domain.Rota;
 import domain.RotaService;
+import domain.exceptions.DomainRuleException;
 
 public class RotaAppService implements IRotaAppService {
     final private IRotaService rotaService;
@@ -14,14 +13,19 @@ public class RotaAppService implements IRotaAppService {
         final String departureAiportCode,
         final String arrivalAirportCode,
         final String cost,
-        final String inputsPath) {
+        final String inputsPath) throws DomainRuleException {
 
-        final List<Rota> rotas = rotaService.getAll(inputsPath);
+        final Rota rota = this.getRotaService().insert(
+            departureAiportCode,
+            arrivalAirportCode,
+            cost,
+            inputsPath
+        );
 
-        return null;
+        return rota;
     }
 
-    public IRotaService RotaService() {
+    private IRotaService getRotaService() {
         return rotaService;
     }
 

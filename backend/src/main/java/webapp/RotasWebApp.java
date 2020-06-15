@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.RotaAppService;
+import domain.Rota;
 import dto.InsertRotasDto;
 
 @WebServlet("/rotas")
 public class RotasWebApp extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+    private final RotaAppService rotaAppService = new RotaAppService();
        
 	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,12 +36,18 @@ public class RotasWebApp extends HttpServlet {
     }
     
     private InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
-        final String departureAirportCode = request.getParameter("departureAirportCode");
-        final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
-        final String cost = request.getParameter("cost");
-        final String inputsPath = request.getParameter("inputsPath");
+        try {
+            final String departureAirportCode = request.getParameter("departureAirportCode");
+            final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
+            final String cost = request.getParameter("cost");
+            final String inputsPath = request.getParameter("inputsPath");
 
-        return null;
+            Rota rota = rotaAppService.insert(departureAirportCode, arrivalAirportCode, cost, inputsPath);
+
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
