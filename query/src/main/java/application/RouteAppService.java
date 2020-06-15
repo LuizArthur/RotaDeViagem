@@ -1,5 +1,8 @@
 package application;
 
+import java.util.List;
+
+import domain.entities.Route;
 import domain.exceptions.DomainRuleException;
 import domain.services.IRouteService;
 import domain.services.RouteService;
@@ -21,14 +24,11 @@ public class RouteAppService implements IRouteAppService{
 		final String departureAirportCode,
 		final String arrivalAirportCode,
 		final String inputsPath
-	)  {
-		final
+	) throws DomainRuleException  {
 		
-		final BestRoute bestRoute = this.getRouteService().getBestRoute(
-			departureAirportCode,
-			arrivalAirportCode,
-			inputsPath
-		);
+		final List<Route> routes = this.getRouteService().getAll(inputsPath);
+		
+		
 				
 		return null;
 	}
