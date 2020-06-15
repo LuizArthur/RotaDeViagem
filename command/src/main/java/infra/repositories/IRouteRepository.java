@@ -2,7 +2,7 @@ package infra.repositories;
 
 import java.util.List;
 
-import domain.Route;
+import domain.entities.Route;
 
 public interface IRouteRepository {
 

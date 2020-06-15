@@ -1,9 +1,9 @@
 package application;
 
-import domain.IRouteService;
-import domain.Route;
-import domain.RouteService;
+import domain.entities.Route;
 import domain.exceptions.DomainRuleException;
+import domain.services.IRouteService;
+import domain.services.RouteService;
 
 public class RouteAppService implements IRouteAppService {
     final private IRouteService routeService;

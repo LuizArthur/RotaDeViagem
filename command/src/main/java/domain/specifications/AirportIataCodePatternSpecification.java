@@ -2,7 +2,7 @@ package domain.specifications;
 
 import java.util.regex.Pattern;
 
-import domain.Airport;
+import domain.entities.Airport;
 
 public class AirportIataCodePatternSpecification implements ISpecification<Airport>{
 

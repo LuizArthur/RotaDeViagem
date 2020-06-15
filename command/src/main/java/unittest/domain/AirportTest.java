@@ -3,7 +3,7 @@ package unittest.domain;
 import org.junit.Assert;
 import org.junit.Test;
 
-import domain.Airport;
+import domain.entities.Airport;
 import domain.specifications.SpecificationResult;
 
 public class AirportTest {

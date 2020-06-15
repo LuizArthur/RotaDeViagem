@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import application.RouteAppService;
-import domain.Route;
+import domain.entities.Route;
 import dto.InsertRotasDto;
 
 @WebServlet("/rotas")

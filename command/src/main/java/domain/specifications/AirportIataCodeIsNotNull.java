@@ -1,6 +1,6 @@
 package domain.specifications;
 
-import domain.Airport;
+import domain.entities.Airport;
 
 public class AirportIataCodeIsNotNull implements ISpecification<Airport> {
 

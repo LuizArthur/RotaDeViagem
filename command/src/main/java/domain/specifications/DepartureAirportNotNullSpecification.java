@@ -1,7 +1,7 @@
 package domain.specifications;
 
-import domain.Airport;
-import domain.Route;
+import domain.entities.Airport;
+import domain.entities.Route;
 
 public class DepartureAirportNotNullSpecification implements ISpecification<Route> {
 

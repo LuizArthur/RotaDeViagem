@@ -1,6 +1,6 @@
 package domain.specifications;
 
-import domain.Route;
+import domain.entities.Route;
 
 public class CostIsNotNegativeSpecification implements ISpecification<Route>{
 

@@ -3,8 +3,8 @@ package unittest.domain;
 import org.junit.Assert;
 import org.junit.Test;
 
-import domain.Airport;
-import domain.Route;
+import domain.entities.Airport;
+import domain.entities.Route;
 import domain.specifications.SpecificationResult;
 
 public class RouteTeste {

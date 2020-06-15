@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import domain.Airport;
-import domain.Route;
+import domain.entities.Airport;
+import domain.entities.Route;
 import utils.FileUtils;
 
 public class RouteRepository implements IRouteRepository {

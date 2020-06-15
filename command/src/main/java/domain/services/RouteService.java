@@ -1,10 +1,12 @@
-package domain;
+package domain.services;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import domain.entities.Airport;
+import domain.entities.Route;
 import domain.exceptions.DomainRuleException;
 import domain.specifications.SpecificationResult;
 import infra.repositories.IRouteRepository;

@@ -1,6 +1,6 @@
 package application;
 
-import domain.Route;
+import domain.entities.Route;
 import domain.exceptions.DomainRuleException;
 
 public interface IRouteAppService {
