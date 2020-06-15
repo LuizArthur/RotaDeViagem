@@ -88,7 +88,7 @@ public class RouteServiceTest {
 		try {
 			final List<Route> routes = routeService.getAll(inputsPath);
 		} catch (DomainRuleException e) {
-			Assert.assertEquals(e.getMessage(), "O arquivo de input possuem dados inconsistentes");
+			Assert.assertEquals(e.getMessage(), "O arquivo de input possue dados inconsistentes");
 		}
 	}
 	

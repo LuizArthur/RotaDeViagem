@@ -44,7 +44,7 @@ public class RouteService implements IRouteService {
         	.findFirst();
         
         if(firstError.isPresent()) {
-        	throw new DomainRuleException("O arquivo de input possuem dados inconsistentes");
+        	throw new DomainRuleException("O arquivo de input possue dados inconsistentes");
         }
         		
         return routes;
@@ -66,6 +66,7 @@ public class RouteService implements IRouteService {
         final String departureAiportCode,
         final String arrivalAirportCode,
         final String cost,
+        final List<Route> routes,
         final String inputsPath
     ) throws DomainRuleException {
         final Airport departureAirport = new Airport(departureAiportCode);
@@ -87,7 +88,6 @@ public class RouteService implements IRouteService {
             throw new DomainRuleException(rotaSpecification.getMessage());
         }
 
-        final List<Route> routes = this.getAll(inputsPath);
         final boolean rotaExists = checkIfExists(route, routes);
         if(rotaExists) {
             throw new DomainRuleException("Rota já existe no arquivo de input");
