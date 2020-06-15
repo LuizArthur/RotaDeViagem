@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import domain.entities.Airport;
 import domain.entities.Route;
 import domain.exceptions.DomainRuleException;
 import domain.services.IRouteService;
@@ -104,7 +105,5 @@ public class RouteServiceTest {
 		} catch (DomainRuleException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	
+	}	
 }

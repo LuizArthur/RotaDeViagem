@@ -13,7 +13,7 @@ public class Airport extends EntityBase {
     private String iataCode;
 
     public Airport(String iataCode) {
-        this.setIataCode(iataCode);
+        this.setIataCode(iataCode.toUpperCase());
     }
 
     public String getIataCode() {
