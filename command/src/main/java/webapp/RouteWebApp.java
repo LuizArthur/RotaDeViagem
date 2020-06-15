@@ -11,24 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import application.RouteAppService;
 import domain.entities.Route;
-import webapp.dto.InsertRotasAdapater;
+import webapp.dto.InsertRoutesAdapater;
 import webapp.utils.JsonUtils;
 
-@WebServlet("/rotas")
-public class RotasWebApp<InsertRotasDto> extends HttpServlet {
+@WebServlet("/route")
+public class RouteWebApp<InsertRotasDto> extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final RouteAppService routeAppService = new RouteAppService();
 
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
-        final webapp.dto.InsertRotasDto insertRotasDto = insertRotas(request, response);
+        final webapp.dto.InsertRoutesDto insertRoutesDto = insertRotas(request, response);
 
         final PrintWriter out = response.getWriter();        
-        out.println(JsonUtils.classToJson(insertRotasDto));
+        out.println(JsonUtils.classToJson(insertRoutesDto));
     }
     
-    private webapp.dto.InsertRotasDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
-    	final InsertRotasAdapater adapter = new InsertRotasAdapater();
+    private webapp.dto.InsertRoutesDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
+    	final InsertRoutesAdapater adapter = new InsertRoutesAdapater();
         try {
             final String departureAirportCode = request.getParameter("departureAirportCode");
             final String arrivalAirportCode = request.getParameter("arrivalAirportCode");

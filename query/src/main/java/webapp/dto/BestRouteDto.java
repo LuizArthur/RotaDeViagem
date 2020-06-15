@@ -1,16 +1,16 @@
 package webapp.dto;
 
-public class InsertRotasDto {
+public class BestRouteDto {
 	private String body;
 	private Integer status;
 	
 	
-	public InsertRotasDto (String body) {		
+	public BestRouteDto(String body) {		
 		setBody(body);
         setStatus((Integer) 200);
     }
 	
-	public InsertRotasDto (Exception e) {
+	public BestRouteDto (Exception e) {
 		setBody(e.getMessage());
         setStatus((Integer) 500);
     }
