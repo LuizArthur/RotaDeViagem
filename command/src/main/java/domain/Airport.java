@@ -25,7 +25,7 @@ public class Airport extends EntityBase {
     }
 
     @Override
-    public SpecificationResult isValid() {
+    public SpecificationResult isValid() {                
         List<ISpecification<Airport>> specs = Arrays.asList(
             new AirportIataCodeIsNotNull(),
             new AirportIataCodePatternSpecification()
@@ -35,7 +35,7 @@ public class Airport extends EntityBase {
             specs
             .stream()
             .map(x -> x.isSatisfiedBy(this))
-            .filter(x -> x.isValid())
+            .filter(x -> !x.isValid())
             .findFirst();
 
         if(firstError.isPresent()) {

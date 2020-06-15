@@ -65,7 +65,7 @@ public class Rota extends EntityBase{
             specs
             .stream()
             .map(x -> x.isSatisfiedBy(this))
-            .filter(x -> x.isValid())
+            .filter(x -> !x.isValid())
             .findFirst();
 
         if(firstError.isPresent()) {

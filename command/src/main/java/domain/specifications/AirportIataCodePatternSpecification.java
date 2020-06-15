@@ -9,8 +9,10 @@ public class AirportIataCodePatternSpecification implements ISpecification<Airpo
     @Override
     public SpecificationResult isSatisfiedBy(final Airport entity) {
         final String iataCode = entity.getIataCode();
-        final boolean obbeyIataPattern = Pattern.matches("[A-Z][A-Z][A-Z]", iataCode);
-        if(!obbeyIataPattern) {
+        final boolean hasNumber = Pattern.matches(".*\\d.*", iataCode);
+        final boolean lengthDiff3 = iataCode.length() != 3;
+        
+        if(hasNumber || lengthDiff3) {
             return new SpecificationResult(false, "Código do aerporto não obedece o padrão IATA");
         }
 
