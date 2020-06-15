@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 import domain.entities.Airport;
 import domain.entities.Route;
@@ -34,7 +35,18 @@ public class RouteService implements IRouteService {
         if(routes == null) {
             throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
         }
-
+        
+        Optional <SpecificationResult> firstError =
+        	routes
+        	.stream()
+        	.map(x -> x.isValid())
+        	.filter(x -> !x.isValid())
+        	.findFirst();
+        
+        if(firstError.isPresent()) {
+        	throw new DomainRuleException("O arquivo de input possuem dados inconsistentes");
+        }
+        		
         return routes;
     }
 

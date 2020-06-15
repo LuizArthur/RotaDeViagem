@@ -1,4 +1,4 @@
-package unittest.domain;
+package unittest.domain.entities;
 
 import org.junit.Assert;
 import org.junit.Test;
