@@ -1,3 +1,5 @@
+// Source: Algorithms 4th Ed - Robert Sedgewick, Kevin Wayne (2011) page 642
+
 package infra.services.bestroute.graph;
 
 public class DirectedEdge

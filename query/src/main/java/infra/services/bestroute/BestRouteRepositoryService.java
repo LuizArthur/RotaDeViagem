@@ -30,8 +30,7 @@ public class BestRouteRepositoryService implements IBestRouteRepositoryService{
 		for(int i = 0; i < routes.size(); i++) {
 			String iataCode = routes.get(i).getDepartureAirport().getIataCode();
 			origins.add(relation.get(iataCode));
-		}
-		
+		}		
 		
 		return origins;
 	}
@@ -42,8 +41,7 @@ public class BestRouteRepositoryService implements IBestRouteRepositoryService{
 		for(int i = 0; i < routes.size(); i++) {
 			String iataCode = routes.get(i).getArrivalAirport().getIataCode();
 			detinations.add(relation.get(iataCode));
-		}
-		
+		}		
 		
 		return detinations;
 	}
@@ -54,8 +52,7 @@ public class BestRouteRepositoryService implements IBestRouteRepositoryService{
 		for(int i = 0; i < routes.size(); i++) {
 			Integer cost = routes.get(i).getCost();
 			weights.add(cost);
-		}
-		
+		}		
 		
 		return weights;
 	}
