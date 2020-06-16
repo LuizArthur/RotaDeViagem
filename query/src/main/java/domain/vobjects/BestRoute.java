@@ -8,7 +8,7 @@ public class BestRoute {
 	private List<Airport> airports;
 	private Integer cost;
 	
-	private BestRoute(List<Airport> airports, Integer cost) {
+	public BestRoute(List<Airport> airports, Integer cost) {
 		setAirports(airports);
 		setCost(cost);
 	}

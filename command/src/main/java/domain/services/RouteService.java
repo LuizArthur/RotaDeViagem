@@ -17,7 +17,7 @@ public class RouteService implements IRouteService {
 
     final private IRouteRepository routeRepository;
 
-    private IRouteRepository getRotaRepository() {
+    private IRouteRepository getRouteRepository() {
         return routeRepository;
     }
 
@@ -31,7 +31,7 @@ public class RouteService implements IRouteService {
             throw new DomainRuleException("O caminho do input não foi fornecido corretamente");
         }
 
-        final List<Route> routes = this.getRotaRepository().getAll(inputsPath);
+        final List<Route> routes = this.getRouteRepository().getAll(inputsPath);
         if(routes == null) {
             throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
         }
@@ -80,7 +80,7 @@ public class RouteService implements IRouteService {
             throw new DomainRuleException("Rota já existe no arquivo de input");
         }
 
-        final boolean isInserted = this.getRotaRepository().insert(route, inputsPath);
+        final boolean isInserted = this.getRouteRepository().insert(route, inputsPath);
         if(!isInserted) {
             throw new DomainRuleException("Nã foi possível inserir a rota no arquivo de inputs");
         }

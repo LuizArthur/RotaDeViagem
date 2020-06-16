@@ -22,8 +22,8 @@ public class RouteAppService implements IRouteAppService {
         final String inputsPath) throws DomainRuleException {
 
         final List<Route> routes = this.getRotaService().getAll(inputsPath);
-        final Airport departureAiport = this.airportService.getByIata(departureAiportCode);
-        final Airport arrivalAirport = this.airportService.getByIata(arrivalAirportCode);
+        final Airport departureAiport = this.getAirportService().getByIata(departureAiportCode);
+        final Airport arrivalAirport = this.getAirportService().getByIata(arrivalAirportCode);
 
         final Route route = this.getRotaService().insert(
             departureAiport,
@@ -39,6 +39,10 @@ public class RouteAppService implements IRouteAppService {
     private IRouteService getRotaService() {
         return routeService;
     }
+    
+    private IAirportService getAirportService() {
+		return airportService;
+	}
 
     public RouteAppService() {
         this.routeService = (IRouteService) new RouteService();
