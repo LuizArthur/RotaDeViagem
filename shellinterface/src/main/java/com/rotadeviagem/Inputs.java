@@ -1,5 +1,8 @@
 package com.rotadeviagem;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.rotadeviagem.exceptions.ArrayWithLengthZeroException;
 
 public class Inputs {
@@ -9,5 +12,21 @@ public class Inputs {
         }
 
         return args[0];
+    }
+    
+    public static List<String> getIataCodes(final String routeString) {
+    	try {
+    		final List<String> iataCodes = Arrays.asList(routeString.replace(" ", "").split("-"));
+
+    		if(iataCodes.size() != 2) {
+    			System.out.println("Invalid Route");
+    			return null;
+    		}
+    		
+    		return iataCodes;
+    	} catch (Exception e) {
+    		System.out.println("Invalid route");
+    		return null;
+    	}
     }
 }
