@@ -16,13 +16,13 @@ public class AiportRepository implements IAirportRepository{
 			final List<String[]> linesFormated = linesList.stream().map(x -> x.replaceAll(" ", "").split(","))
                     .collect(Collectors.toList());
 			
-			final HashSet<String> setIataCode = new HashSet<String>();
+			final HashSet<String> iataCodeSet = new HashSet<String>();
 			linesFormated.forEach(x -> {
-				setIataCode.add(x[0].toUpperCase());
-				setIataCode.add(x[1].toUpperCase());
+				iataCodeSet.add(x[0].toUpperCase());
+				iataCodeSet.add(x[1].toUpperCase());
 			});
 			
-			setIataCode.forEach(x -> airports.add(new Airport(x)));
+			iataCodeSet.forEach(x -> airports.add(new Airport(x)));
 			
 			return airports;
 			
