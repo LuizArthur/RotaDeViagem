@@ -6,9 +6,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import domain.entities.Airport;
+import infra.data.DataBaseFactory;
+import infra.data.IDataBaseFactory;
 import infra.services.FileService;
 
 public class AiportRepository implements IAirportRepository{
+	
+	final private IDataBaseFactory dataBaseFactory;
+	
+	public AiportRepository() {
+		this.dataBaseFactory = new DataBaseFactory();
+	}
+	
+	private IDataBaseFactory getDataBaseFactory() {
+		return dataBaseFactory;
+	}
 	
 	private List<Airport> linesToAirports(final List<String> linesList) {
 		try {
@@ -32,7 +44,9 @@ public class AiportRepository implements IAirportRepository{
 	}
 	
 	@Override
-	public List<Airport> getAll(String inputsPath) {
+	public List<Airport> getAll() {
+		String inputsPath = this.getDataBaseFactory().getDataSource();
+		
 		try {
             final List<String> linesList = FileService.read(inputsPath);
 

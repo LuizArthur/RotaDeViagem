@@ -1,7 +1,9 @@
 package domain.services;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import domain.entities.Airport;
 import domain.exceptions.DomainRuleException;
@@ -20,9 +22,26 @@ public class AirportService implements IAirportService{
 	private IAirportRepository getAirportRepository() {
 		return airportRepository;
 	}
+	
+	private boolean checkExistance(String iataCode, List<Airport> airports) {
+		HashSet<String> iataCodeSet = new HashSet<String>(
+			airports
+			.stream()
+			.map(x -> x.getIataCode())
+			.collect(Collectors.toList())
+		);
+		
+		return iataCodeSet.contains(iataCode);
+	}
 
 	@Override
 	public Airport getByIata(String iataCode) throws DomainRuleException {
+		List<Airport> airports = this.getAll();
+		boolean airportExists = checkExistance(iataCode, airports);
+		if(!airportExists) {
+			throw new DomainRuleException("Aiport does not exists in DataBase");
+		}
+		
 		Airport airport = new Airport(iataCode);
 		SpecificationResult airportSpec = airport.isValid();
 		
@@ -34,12 +53,8 @@ public class AirportService implements IAirportService{
 	}
 
 	@Override
-	public List<Airport> getAll(String inputsPath) throws DomainRuleException {
-		if(inputsPath == null) {
-            throw new DomainRuleException("O caminho do input não foi fornecido corretamente");
-        }
-		
-		final List<Airport> airports = this.getAirportRepository().getAll(inputsPath);
+	public List<Airport> getAll() throws DomainRuleException {		
+		final List<Airport> airports = this.getAirportRepository().getAll();
 		if(airports == null) {
 			throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
 		}

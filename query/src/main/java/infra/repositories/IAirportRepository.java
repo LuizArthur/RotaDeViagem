@@ -6,6 +6,6 @@ import domain.entities.Airport;
 
 public interface IAirportRepository {
 
-	List<Airport> getAll(String inputsPath);
+	List<Airport> getAll();
 
 }

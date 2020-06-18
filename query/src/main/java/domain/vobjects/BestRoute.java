@@ -9,21 +9,15 @@ public class BestRoute {
 	private Integer cost;
 	
 	public BestRoute(List<Airport> airports, Integer cost) {
-		setAirports(airports);
-		setCost(cost);
+		this.airports = airports;
+		this.cost = cost;
 	}
 	
 	public List<Airport> getAirports() {
 		return airports;
 	}
 	
-	public void setAirports(List<Airport> airports) {
-		this.airports = airports;
-	}
 	public Integer getCost() {
 		return cost;
-	}
-	public void setCost(Integer cost) {
-		this.cost = cost;
 	}
 }
