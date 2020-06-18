@@ -23,7 +23,7 @@ public class AirportTest {
 		final SpecificationResult airportSpec = airport.isValid();
 		
 		Assert.assertFalse(airportSpec.isValid());
-		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+		Assert.assertEquals(airportSpec.getMessage(), "Airport code does not obey IATA pattern");
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class AirportTest {
 		final SpecificationResult airportSpec = airport.isValid();
 		
 		Assert.assertFalse(airportSpec.isValid());
-		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+		Assert.assertEquals(airportSpec.getMessage(), "Airport code does not obey IATA pattern");
 	}
 	
 	@Test
@@ -41,7 +41,7 @@ public class AirportTest {
 		final SpecificationResult airportSpec = airport.isValid();
 		
 		Assert.assertFalse(airportSpec.isValid());
-		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
+		Assert.assertEquals(airportSpec.getMessage(), "Airport code does not obey IATA pattern");
 	}
 	
 	@Test
@@ -50,16 +50,7 @@ public class AirportTest {
 		final SpecificationResult airportSpec = airport.isValid();
 		
 		Assert.assertFalse(airportSpec.isValid());
-		Assert.assertEquals(airportSpec.getMessage(), "Código do aerporto não obedece o padrão IATA");
-	}
-	
-	@Test
-	public void AiportIataCodeNull() {
-		final Airport airport = new Airport(null);
-		final SpecificationResult airportSpec = airport.isValid();
-		
-		Assert.assertFalse(airportSpec.isValid());
-		Assert.assertEquals(airportSpec.getMessage(), "O Código do aeroporto fornecido é nulo");
+		Assert.assertEquals(airportSpec.getMessage(), "Airport code does not obey IATA pattern");
 	}
 	
 }

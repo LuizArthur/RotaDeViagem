@@ -10,7 +10,7 @@ import domain.specifications.SpecificationResult;
 public class RouteTeste {
 	
 	@Test
-	public void RotaWithRightElements() {
+	public void rotaWithRightElements() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		
@@ -22,7 +22,7 @@ public class RouteTeste {
 	}
 	
 	@Test
-	public void RotaWithRightElementsCostInteger() {
+	public void routeWithRightElementsCostInteger() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final Integer cost = 50;
@@ -35,7 +35,7 @@ public class RouteTeste {
 	}
 	
 	@Test
-	public void RotaWithNullDepartureAirport() {
+	public void routeWithNullDepartureAirport() {
 		final Airport departureAirport = null;
 		final Airport arrivalAirport = new Airport("ORL");
 		
@@ -43,11 +43,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Rota não possui aeroporto de partida");
+		Assert.assertEquals(rotaSpec.getMessage(), "Route does not have departure airport");
 	}
 	
 	@Test
-	public void RotaWithNullArrivalAirport() {
+	public void routeWithNullArrivalAirport() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = null;
 		
@@ -55,11 +55,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Rota não possui aeroporto de chegada");
+		Assert.assertEquals(rotaSpec.getMessage(), "Route does not have arrival airport");
 	}
 	
 	@Test
-	public void RotaWithNullAirports() {
+	public void routeWithNullAirports() {
 		final Airport departureAirport = null;
 		final Airport arrivalAirport = null;
 		
@@ -70,7 +70,7 @@ public class RouteTeste {
 	}
 	
 	@Test
-	public void RotaWithInvalidCost() {
+	public void routeWithInvalidCost() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final String cost = "Olá156615";
@@ -79,11 +79,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Custo não pode ser nulo");
+		Assert.assertEquals(rotaSpec.getMessage(), "Cost is not valid");
 	}
 	
 	@Test
-	public void RotaWithInvalidCostFloat() {
+	public void routeWithInvalidCostFloat() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final String cost = "56.30";
@@ -92,11 +92,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Custo não pode ser nulo");
+		Assert.assertEquals(rotaSpec.getMessage(), "Cost is not valid");
 	}
 	
 	@Test
-	public void RotaWithInvalidCostNull() {
+	public void routeWithInvalidCostNull() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final String cost = null;
@@ -105,11 +105,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Custo não pode ser nulo");
+		Assert.assertEquals(rotaSpec.getMessage(), "Cost is not valid");
 	}
 	
 	@Test
-	public void RotaWithInvalidCostNegative() {
+	public void routeWithInvalidCostNegative() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final String cost = "-10";
@@ -118,11 +118,11 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Custo não pode ser negativo");
+		Assert.assertEquals(rotaSpec.getMessage(), "Cost cannot be negative");
 	}
 	
 	@Test
-	public void RotaWithInvalidCostNegativeInteger() {
+	public void routeWithInvalidCostNegativeInteger() {
 		final Airport departureAirport = new Airport("GRU");
 		final Airport arrivalAirport = new Airport("ORL");
 		final Integer cost = -10;
@@ -131,7 +131,7 @@ public class RouteTeste {
 		SpecificationResult rotaSpec = route.isValid();
 		
 		Assert.assertFalse(rotaSpec.isValid());
-		Assert.assertEquals(rotaSpec.getMessage(), "Custo não pode ser negativo");
+		Assert.assertEquals(rotaSpec.getMessage(), "Cost cannot be negative");
 	}
 	
 	

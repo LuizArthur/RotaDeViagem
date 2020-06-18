@@ -8,7 +8,7 @@ public class CostIsNotNegativeSpecification implements ISpecification<Route>{
 	public SpecificationResult isSatisfiedBy(Route entity) {
 		final Integer cost = entity.getCost();
 		if(cost < 0) {
-			return new SpecificationResult(false, "Custo não pode ser negativo");
+			return new SpecificationResult(false, "Cost cannot be negative");
 		}
 		
 		return new SpecificationResult(true, "");

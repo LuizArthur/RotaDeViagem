@@ -8,7 +8,7 @@ public class CostIsNotNullSpecification implements ISpecification<Route> {
     public SpecificationResult isSatisfiedBy(final Route entity) {
         final Integer cost = entity.getCost();
         if(cost == null) {
-            return new SpecificationResult(false, "Custo não pode ser nulo");
+            return new SpecificationResult(false, "Cost is not valid");
         }
 
         return new SpecificationResult(true, "");
