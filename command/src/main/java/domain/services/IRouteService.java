@@ -8,8 +8,8 @@ import domain.exceptions.DomainRuleException;
 
 public interface IRouteService {
 
-	List<Route> getAll(String inputsPath) throws DomainRuleException;
+	List<Route> getAll() throws DomainRuleException;
 
-	Route insert(Airport departureAiport, Airport arrivalAirport, String cost, List<Route> routes, String inputsPath) throws DomainRuleException;
+	Route insert(Airport departureAiport, Airport arrivalAirport, String cost, List<Route> routes) throws DomainRuleException;
         
 }

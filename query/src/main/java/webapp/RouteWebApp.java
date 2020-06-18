@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import application.IRouteAppService;
 import application.RouteAppService;
-import domain.entities.Airport;
 import domain.vobjects.BestRoute;
 import webapp.dto.BestRouteAdapter;
 import webapp.dto.BestRouteDto;

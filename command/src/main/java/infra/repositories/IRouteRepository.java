@@ -6,8 +6,8 @@ import domain.entities.Route;
 
 public interface IRouteRepository {
 
-	List<Route> getAll(String inputsPath);
+	List<Route> getAll();
 
-	boolean insert(Route route, String inputsPath);
+	boolean insert(Route route);
     
 }

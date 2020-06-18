@@ -33,9 +33,8 @@ public class RouteWebApp<InsertRotasDto> extends HttpServlet {
             final String departureAirportCode = request.getParameter("departureAirportCode");
             final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
             final String cost = request.getParameter("cost");
-            final String inputsPath = request.getParameter("inputsPath");
 
-            final Route route = routeAppService.insert(departureAirportCode, arrivalAirportCode, cost, inputsPath);            
+            final Route route = routeAppService.insert(departureAirportCode, arrivalAirportCode, cost);            
 
             return adapter.RouteToDto(route);
         } catch (Exception e) {

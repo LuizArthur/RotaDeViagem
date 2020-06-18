@@ -6,9 +6,21 @@ import java.util.stream.Collectors;
 
 import domain.entities.Airport;
 import domain.entities.Route;
+import infra.data.DataBaseFactory;
+import infra.data.IDataBaseFactory;
 import infra.services.FileService;
 
 public class RouteRepository implements IRouteRepository {
+	
+	final private IDataBaseFactory dataBaseFactory;
+	
+	public RouteRepository() {
+		this.dataBaseFactory = new DataBaseFactory();
+	}
+	
+	private IDataBaseFactory getDataBaseFactory() {
+		return this.dataBaseFactory;
+	}
 
     private List<Route> linesToRotas(final List<String> linesList) {
         try {
@@ -25,7 +37,9 @@ public class RouteRepository implements IRouteRepository {
     }
 
     @Override
-    public List<Route> getAll(final String inputsPath) {
+    public List<Route> getAll() {
+    	String inputsPath = this.getDataBaseFactory().getDataSource();
+    	
         try {
             final List<String> linesList = FileService.read(inputsPath);
 
@@ -36,14 +50,15 @@ public class RouteRepository implements IRouteRepository {
     }
 
     @Override
-    public boolean insert(final Route route, final String inputsPath) {
+    public boolean insert(final Route route) {
+    	String inputsPath = this.getDataBaseFactory().getDataSource(); 
+    	
         final String text = String
                 .format(
             "\n%s,%s,%s",
             route.getDepartureAirport().getIataCode(),
             route.getArrivalAirport().getIataCode(),
             route.getCost());
-
         
         final boolean isWritten = FileService.write(text, true, inputsPath);
         
