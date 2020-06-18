@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import domain.specifications.AirportIataCodeIsNotNull;
 import domain.specifications.AirportIataCodePatternSpecification;
 import domain.specifications.ISpecification;
 import domain.specifications.SpecificationResult;
@@ -27,7 +26,6 @@ public class Airport extends EntityBase{
     @Override
     public SpecificationResult isValid() {                
         List<ISpecification<Airport>> specs = Arrays.asList(
-            new AirportIataCodeIsNotNull(),
             new AirportIataCodePatternSpecification()
         );
 

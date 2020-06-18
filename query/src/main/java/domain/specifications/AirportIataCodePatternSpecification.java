@@ -13,7 +13,7 @@ public class AirportIataCodePatternSpecification implements ISpecification<Airpo
         final boolean lengthDiff3 = iataCode.length() != 3;
         
         if(hasNumber || lengthDiff3) {
-            return new SpecificationResult(false, "Código do aerporto não obedece o padrão IATA");
+            return new SpecificationResult(false, "Airport code does not obey IATA pattern");
         }
 
         return new SpecificationResult(true, "");

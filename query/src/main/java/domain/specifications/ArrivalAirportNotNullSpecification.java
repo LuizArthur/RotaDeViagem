@@ -9,7 +9,7 @@ public class ArrivalAirportNotNullSpecification implements ISpecification<Route>
     public SpecificationResult isSatisfiedBy(final Route entity) {
         final Airport arrivalAirport = entity.getArrivalAirport();
         if(arrivalAirport == null) {
-            return new SpecificationResult(false, "Rota não possui aeroporto de chegada");
+            return new SpecificationResult(false, "Route does not have arrival airport");
         }
 
         return new SpecificationResult(true, "");
