@@ -34,12 +34,8 @@ public class RouteService implements IRouteService{
     }
     
 	@Override
-	public List<Route> getAll(String inputsPath) throws DomainRuleException {
-		if(inputsPath == null) {
-            throw new DomainRuleException("O caminho do input não foi fornecido corretamente");
-        }
-
-        final List<Route> routes = this.getRotaRepository().getAll(inputsPath);
+	public List<Route> getAll() throws DomainRuleException {
+        final List<Route> routes = this.getRotaRepository().getAll();
         if(routes == null) {
             throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
         }

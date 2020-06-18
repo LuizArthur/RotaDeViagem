@@ -9,7 +9,7 @@ import domain.vobjects.BestRoute;
 
 public interface IRouteService {
 
-	List<Route> getAll(String inputsPath) throws DomainRuleException;
+	List<Route> getAll() throws DomainRuleException;
 
 	BestRoute getBestRoute(Airport departureAirport, Airport arrivalAirport, List<Airport> airports, List<Route> routes) throws DomainRuleException;
 

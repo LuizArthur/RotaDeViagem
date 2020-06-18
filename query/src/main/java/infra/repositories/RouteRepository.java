@@ -2,13 +2,26 @@ package infra.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import domain.entities.Airport;
 import domain.entities.Route;
+import infra.data.DataBaseFactory;
+import infra.data.IDataBaseFactory;
 import infra.services.FileService;
 
 public class RouteRepository implements IRouteRepository{
+
+	final private IDataBaseFactory dataBaseFactory;
+	
+	public RouteRepository() {
+		this.dataBaseFactory = new DataBaseFactory();
+	}
+	
+	private IDataBaseFactory getDataBaseFactory() {
+		return dataBaseFactory;
+	}
 
 	private List<Route> linesToRotas(final List<String> linesList) {
         try {
@@ -25,7 +38,9 @@ public class RouteRepository implements IRouteRepository{
     }
 
     @Override
-    public List<Route> getAll(final String inputsPath) {
+    public List<Route> getAll() {
+    	String inputsPath = this.getDataBaseFactory().getDataSource();    	
+    	
         try {
             final List<String> linesList = FileService.read(inputsPath);
 

@@ -31,15 +31,14 @@ public class RouteAppService implements IRouteAppService{
 	@Override
 	public BestRoute getBestRoute(
 		final String departureAirportCode,
-		final String arrivalAirportCode,
-		final String inputsPath
+		final String arrivalAirportCode
 	) throws DomainRuleException  {
 		
 		final Airport departureAirport = this.getAirportService().getByIata(departureAirportCode);
 		final Airport arrivalAirport = this.getAirportService().getByIata(arrivalAirportCode);
 		
-		final List<Route> routes = this.getRouteService().getAll(inputsPath);
-		final List<Airport> airports = this.getAirportService().getAll(inputsPath);
+		final List<Route> routes = this.getRouteService().getAll();
+		final List<Airport> airports = this.getAirportService().getAll();
 		
 		final BestRoute bestRoute = this.getRouteService().getBestRoute(
 			departureAirport,

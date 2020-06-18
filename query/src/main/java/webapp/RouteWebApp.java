@@ -35,9 +35,8 @@ public class RouteWebApp extends HttpServlet {
 		try {
 			final String departureAirportCode = request.getParameter("departureAirportCode");
             final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
-            final String inputsPath = request.getParameter("inputsPath");
             
-            BestRoute bestRoute = routeAppService.getBestRoute(departureAirportCode, arrivalAirportCode, inputsPath);
+            BestRoute bestRoute = routeAppService.getBestRoute(departureAirportCode, arrivalAirportCode);
             
             return adapter.BestRouteToDto(bestRoute);
             
