@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import domain.entities.Airport;
 import domain.exceptions.DomainRuleException;
 import domain.specifications.SpecificationResult;
-import infra.repositories.AiportRepository;
+import infra.repositories.AirportRepository;
 import infra.repositories.IAirportRepository;
 
 public class AirportService implements IAirportService{
@@ -16,7 +16,7 @@ public class AirportService implements IAirportService{
 	final private IAirportRepository airportRepository;
 	
 	public AirportService() {
-		this.airportRepository = (IAirportRepository) new AiportRepository();
+		this.airportRepository = (IAirportRepository) new AirportRepository();
 	}
 	
 	private IAirportRepository getAirportRepository() {

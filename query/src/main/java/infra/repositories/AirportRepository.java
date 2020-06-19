@@ -10,11 +10,11 @@ import infra.data.DataBaseFactory;
 import infra.data.IDataBaseFactory;
 import infra.services.FileService;
 
-public class AiportRepository implements IAirportRepository{
+public class AirportRepository implements IAirportRepository{
 	
 	final private IDataBaseFactory dataBaseFactory;
 	
-	public AiportRepository() {
+	public AirportRepository() {
 		this.dataBaseFactory = new DataBaseFactory();
 	}
 	

@@ -1,3 +1,5 @@
+
+
 # Objetivo
 Esse programa possui duas est APis e um shell interface, onde é possível adicionar rotas de aeroporto em um arquivo csv e achar a rota mais barata
 entre dois aeroportos.
@@ -81,6 +83,82 @@ RotaDeViagem
                     |-- utils
                         JsonUtils.java
                     |-- RouteWebApp.java
-    
-
+|-- docker
+    |-- .env
+    |-- docker-compose.yml
+    |-- shellinterface.sh
+    |-- tomcat.service
+    |-- backend
+        |-- Dockerfile
+    |-- input
+        |-- input.csv
+|-- query
+   |-- src
+       |-- main
+           |-- java
+               |-- application
+                   |-- AirportAppService.java
+                   |-- IAirportAppService.java
+                   |-- IRouteAppService.java
+                   |-- RouteAppService.java
+               |-- domain
+                   |-- entities
+                       |-- Airport.java
+                       |-- EntityBase.java
+                       |-- Route.java
+                   |-- exceptions
+                       |-- DomainRuleException.java
+                   |-- services
+                       |-- AirportService.java
+                       |-- IAirportService.java
+                       |-- IRouteService.java
+                       |-- RouteService.java
+                   |-- specifications
+                       |-- AirportIaaCodePatternSpecification.java
+                       |-- ArrivalAirportNotNullSpecification.java
+                       |-- CostIsNotNegativeSpecification.java
+                       |-- CostIsNotNullSpecification.java
+                       |-- DepartureAirportNotNullSpecification.java
+                       |-- ISpecification.java
+                       |-- SpecificationResult.java
+                   |-- vobjects
+                       |-- BestRoute.java
+               |-- infra
+                   |-- data
+                       |-- DataBaseFactory.java
+                       |-- IDataBaseFactory.java
+                   |-- repositories
+                       |-- IAirportRepository.java
+                       |-- AirportRepository.java
+                       |-- IRouteRepository.java
+                       |-- RouteRepository.java
+                   |-- services
+                       |-- bestroute
+                           |-- graph
+                               |-- Bag.java
+                               |-- Dijkstra.java
+                               |-- DirectEdge.java
+                               |-- EdgeWeigtedDigraph.java
+                               |-- IndexMinPQ.java
+                           |-- BestRouteRepositoryService.java
+                           |-- IBestRouteRepositoryService.java
+                       |-- FileService.java
+               |-- unittest
+                   |-- domain
+                       |-- entities
+                           |-- AirportTest.java
+                           |-- RouteTest.java
+                       |-- specifications
+                           |-- AirportIaaCodePatternSpecificationTest.java
+                           |-- ArrivalAirportNotNullSpecificationTest.java
+                           |-- CostIsNotNegativeSpecificationTest.java
+                           |-- CostIsNotNullSpecificationTest.java
+                           |-- DepartureAirportNotNullSpecificationTest.java
+               |-- webapp
+                   |-- dto
+                       |-- BestRouteAdapter.java
+                       |-- BestRouteDto.java
+                   |-- utils
+                       JsonUtils.java
+                   |-- RouteWebApp.java 
 ```
