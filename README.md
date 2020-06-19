@@ -9,6 +9,9 @@ Entre na pasta docker e digite o seguinte comando:
 ```sh
 $ . shellinterface.sh completePathToInputFile
 ```
+> Aplicação executada em ambiente Linux
+> A primeira execução irá demorar alguns minutos
+
 Depois de iniciada a execução, o programa pedirá a rota, para o cálculo do menor custo, como shell input. O shell input deve obedecer o seguinte formato:  
 XXX-XXX => Exemplo: GRU-CDG
 
