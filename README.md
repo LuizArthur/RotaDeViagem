@@ -163,9 +163,9 @@ RotaDeViagem
                    |-- RouteWebApp.java 
 ```
 # Decisão de design
-Para criação deste projeto, foi adotado o padrão de projeto DDD e arquitetura em layers. Para o cálculo da rota com menor custo foi utilizado grafos e o algoritmo de menor caminho Dijkstra.
-Para ambas as aplicações temos duas entidades Airport e Route, e no caso da app query, temos também o objeto de valor BestRoute. Imaginei que numa aplicação real, cada aeroporto e rota teriam identificaçõs únicas além de outras informações a respeito, diferente de BestRoute, que é uma melhor rota calculada no momento e que é imutável.
-A camada WebApp tem a função de receer os request e adaptar a reposta da API para um dto. WebApp por sua vez chama AppService, qu funciona como um orquestrador, que por sua vez, se conecta com domain, onde está contido as regras do negócio. E para finalizar, a camada Infra, onde conteria a conexão com os bancos de dados (no caso consulta e escrita no arquivo csv), assim como qualuer tipo de serviço que não envolva diretamente as regras de negócio.
+Para criação deste projeto, foi adotado o padrão de projeto DDD e arquitetura em layers. Para o cálculo da rota com menor custo foi utilizado grafos e o algoritmo de menor caminho Dijkstra.  
+Para ambas as aplicações temos duas entidades Airport e Route e, no caso da app query, temos também o objeto de valor BestRoute. Imaginei que, numa aplicação real, cada aeroporto e rota teriam identificaçõs únicas além de outras informações a respeito, diferente de BestRoute que é uma melhor rota calculada e imutável.
+A camada WebApp tem a função de receber os requests e adaptar a reposta da API para um DTO. A WebApp por sua vez chama a AppService, que funciona como um orquestrador, o qual, se conecta com o Domain, onde estão contidas as regras do negócio. E para finalizar, a camada Infra que conteria a conexão com os bancos de dados (no caso consulta e escrita no arquivo csv), assim como qualquer tipo de serviço que não envolva diretamente as regras de negócio.
 
 # Descrição das APIs
 * Command API:
@@ -173,7 +173,7 @@ A camada WebApp tem a função de receer os request e adaptar a reposta da API p
     Recebe como parâmetros:
         - departureAirportCode => Exemplo: GRU
         - arrivalAirportCode => Exemplo: CGH
-        - cost => Exemplo: 10 (Número inteiro)
+        - cost => Exemplo: 10 (Número inteiroe não negativo)
     Encoding: application/x-www-form-urlencoded
     url: http://localhost:8080/command/route
 * Query:
