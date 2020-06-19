@@ -36,7 +36,7 @@ public class RouteService implements IRouteService{
 	public List<Route> getAll() throws DomainRuleException {
         final List<Route> routes = this.getRotaRepository().getAll();
         if(routes == null) {
-            throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
+            throw new DomainRuleException("It was not possible to read input file");
         }
         
         Optional <SpecificationResult> firstError =
@@ -47,7 +47,7 @@ public class RouteService implements IRouteService{
         	.findFirst();
         
         if(firstError.isPresent()) {
-        	throw new DomainRuleException("O arquivo de input possue dados inconsistentes");
+        	throw new DomainRuleException("The input file has inconsistent data");
         }
         		
         return routes;
@@ -80,12 +80,12 @@ public class RouteService implements IRouteService{
 	) throws DomainRuleException {
 		boolean airportExists = checkAiportExistance(departureAirport, arrivalAirport, airports);
 		if(!airportExists) {
-			throw new DomainRuleException("Aeroporto de partida ou chegada não está listado no arquivo de Input");
+			throw new DomainRuleException("Aiport is not in the input");
 		}
 		
 		BestRoute bestRoute = this.getBestRouteRepositoryService().bestRoute(departureAirport, arrivalAirport, airports, routes);
 		if(bestRoute.getAirports().size() == 0) {
-			throw new DomainRuleException("Não existe uma rota para estes aeroportos");
+			throw new DomainRuleException("A route for these airports does not exist");
 		}		
 		
 		return bestRoute;

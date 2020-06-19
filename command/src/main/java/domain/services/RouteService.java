@@ -29,7 +29,7 @@ public class RouteService implements IRouteService {
     public List<Route> getAll() throws DomainRuleException {
         final List<Route> routes = this.getRouteRepository().getAll();
         if(routes == null) {
-            throw new DomainRuleException("Não foi possível fazer a leitura do arquivo input");
+            throw new DomainRuleException("It was not possible to read input file");
         }
         
         Optional <SpecificationResult> firstError =
@@ -40,7 +40,7 @@ public class RouteService implements IRouteService {
         	.findFirst();
         
         if(firstError.isPresent()) {
-        	throw new DomainRuleException("O arquivo de input possue dados inconsistentes");
+        	throw new DomainRuleException("The input file has inconsistent data");
         }
         		
         return routes;
@@ -72,12 +72,12 @@ public class RouteService implements IRouteService {
 
         final boolean rotaExists = checkIfExists(route, routes);
         if(rotaExists) {
-            throw new DomainRuleException("Rota já existe no arquivo de input");
+            throw new DomainRuleException("Route already exists in input");
         }
 
         final boolean isInserted = this.getRouteRepository().insert(route);
         if(!isInserted) {
-            throw new DomainRuleException("Nã foi possível inserir a rota no arquivo de inputs");
+            throw new DomainRuleException("It was not possible to insert the route");
         }
         
         return route;
