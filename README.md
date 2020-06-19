@@ -171,16 +171,16 @@ Para ambas as aplicações temos duas entidades Airport e Route e, no caso da ap
 A camada WebApp tem a função de receber os requests e adaptar a reposta da API para um DTO. A WebApp por sua vez chama a AppService, que funciona como um orquestrador, o qual, se conecta com o Domain, onde estão contidas as regras do negócio. E para finalizar, a camada Infra que conteria a conexão com os bancos de dados (no caso consulta e escrita no arquivo csv), assim como qualquer tipo de serviço que não envolva diretamente as regras de negócio.
 
 # Descrição das APIs
-* Command API:
-    POST que tem como objetivo escrever novas rotas no arquivo de input.
-    Recebe como parâmetros:
-        - departureAirportCode => Exemplo: GRU
-        - arrivalAirportCode => Exemplo: CGH
-        - cost => Exemplo: 10 (Número inteiroe não negativo)
-    Encoding: application/x-www-form-urlencoded
-    url: http://localhost:8080/command/route
-* Query:
-    GET que tem como objetivo consultar a rota mais barata entre dois aeroportos
-    Recebe como parâmentros:
-        - route => Exemplo: GRU-CDG
+* Command API:  
+    POST que tem como objetivo escrever novas rotas no arquivo de input.  
+    Recebe como parâmetros:  
+        - departureAirportCode => Exemplo: GRU  
+        - arrivalAirportCode => Exemplo: CGH  
+        - cost => Exemplo: 10 (Número inteiroe não negativo)  
+    Encoding: application/x-www-form-urlencoded  
+    url: http://localhost:8080/command/route  
+* Query:  
+    GET que tem como objetivo consultar a rota mais barata entre dois aeroportos  
+    Recebe como parâmentros:  
+        - route => Exemplo: GRU-CDG  
     url: http://localhost:8080/query/route => Exemplo: http://localhost:8080/query/route?route=GRU-CDG
