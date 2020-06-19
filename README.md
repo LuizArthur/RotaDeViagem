@@ -16,7 +16,7 @@ Na root folder do projeto existe uma file exemplo chamada input-file.txt, cuja a
 CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota  
 CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota  
 ...
-##### Vale lembrar que para a execução apropriada do programa, o código do aeroporto deve obedecer o padrão [IATA](https://en.wikipedia.org/wiki/IATA_airport_code#:~:text=An%20IATA%20airport%20code%2C%20also,Air%20Transport%20Association%20(IATA).) (composto de três letras) e o custo não deve ser negativo . Isso vale tanto para os dados de entrada, assim como para o input no shell.
+##### Vale lembrar que para a execução apropriada do programa, o código do aeroporto deve obedecer o padrão [IATA](https://en.wikipedia.org/wiki/IATA_airport_code#:~:text=An%20IATA%20airport%20code%2C%20also,Air%20Transport%20Association%20(IATA).) (composto de três letras) e o custo não pode ser negativo e deve ser um número inteiro . Isso vale tanto para os dados de entrada como para o input no shell.
 
 Para sair do shell interface basta pressionar CTRL+C. E para parar a imagem docker:
 ```sh
@@ -167,7 +167,7 @@ Para criação deste projeto, foi adotado o padrão de projeto DDD e arquitetura
 Para ambas as aplicações temos duas entidades Airport e Route, e no caso da app query, temos também o objeto de valor BestRoute. Imaginei que numa aplicação real, cada aeroporto e rota teriam identificaçõs únicas além de outras informações a respeito, diferente de BestRoute, que é uma melhor rota calculada no momento e que é imutável.
 A camada WebApp tem a função de receer os request e adaptar a reposta da API para um dto. WebApp por sua vez chama AppService, qu funciona como um orquestrador, que por sua vez, se conecta com domain, onde está contido as regras do negócio. E para finalizar, a camada Infra, onde conteria a conexão com os bancos de dados (no caso consulta e escrita no arquivo csv), assim como qualuer tipo de serviço que não envolva diretamente as regras de negócio.
 
-#Descrição das APIs
+# Descrição das APIs
 * Command API:
     POST que tem como objetivo escrever novas rotas no arquivo de input.
     Recebe como parâmetros:
