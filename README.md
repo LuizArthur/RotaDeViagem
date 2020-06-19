@@ -1,7 +1,7 @@
 
 
 # Objetivo
-Esse programa possui duas est APis e um shell interface, onde é possível adicionar rotas de aeroporto em um arquivo csv e achar a rota mais barata
+Esse programa possui duas Rest APis e um shell interface, onde é possível adicionar rotas de aeroporto em um arquivo csv e achar a rota mais barata
 entre dois aeroportos.
 # Execução
 Para executar a aplicação você precisa ter instalado curl, docker e docker-compose.
@@ -162,3 +162,22 @@ RotaDeViagem
                        JsonUtils.java
                    |-- RouteWebApp.java 
 ```
+# Decisão de design
+Para criação deste projeto, foi adotado o padrão de projeto DDD e arquitetura em layers. Para o cálculo da rota com menor custo foi utilizado grafos e o algoritmo de menor caminho Dijkstra.
+Para ambas as aplicações temos duas entidades Airport e Route, e no caso da app query, temos também o objeto de valor BestRoute. Imaginei que numa aplicação real, cada aeroporto e rota teriam identificaçõs únicas além de outras informações a respeito, diferente de BestRoute, que é uma melhor rota calculada no momento e que é imutável.
+A camada WebApp tem a função de receer os request e adaptar a reposta da API para um dto. WebApp por sua vez chama AppService, qu funciona como um orquestrador, que por sua vez, se conecta com domain, onde está contido as regras do negócio. E para finalizar, a camada Infra, onde conteria a conexão com os bancos de dados (no caso consulta e escrita no arquivo csv), assim como qualuer tipo de serviço que não envolva diretamente as regras de negócio.
+
+#Descrição das APIs
+* Command API:
+    POST que tem como objetivo escrever novas rotas no arquivo de input.
+    Recebe como parâmetros:
+        - departureAirportCode => Exemplo: GRU
+        - arrivalAirportCode => Exemplo: CGH
+        - cost => Exemplo: 10 (Número inteiro)
+    Encoding: application/x-www-form-urlencoded
+    url: http://localhost:8080/command/route
+* Query:
+    GET que tem como objetivo consultar a rota mais barata entre dois aeroportos
+    Recebe como parâmentros:
+        - route => Exemplo: GRU-CDG
+    url: http://localhost:8080/query/route => Exemplo: http://localhost:8080/query/route?route=GRU-CDG
