@@ -36,10 +36,8 @@ public class AirportService implements IAirportService{
 
 	@Override
 	public Airport getByIata(String iataCode) throws DomainRuleException {
-		List<Airport> airports = this.getAll();
-		boolean airportExists = checkExistance(iataCode, airports);
-		if(!airportExists) {
-			throw new DomainRuleException("Aiport does not exists in DataBase");
+		if(iataCode == null) {
+			throw new DomainRuleException("Iata code is not valid");
 		}
 		
 		Airport airport = new Airport(iataCode);
@@ -48,6 +46,12 @@ public class AirportService implements IAirportService{
 		if(!airportSpec.isValid()) {
 			throw new DomainRuleException(airportSpec.getMessage());
 		}
+		
+		List<Airport> airports = this.getAll();
+		boolean airportExists = checkExistance(airport.getIataCode(), airports);
+		if(!airportExists) {
+			throw new DomainRuleException("Aiport does not exists in DataBase");
+		}		
 		
 		return airport;
 	}

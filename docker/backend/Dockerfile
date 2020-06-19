@@ -11,8 +11,6 @@ COPY /query/ /app/query/
 
 WORKDIR /app/query
 
-RUN ls
-
 RUN mvn compile
 RUN mvn package
 

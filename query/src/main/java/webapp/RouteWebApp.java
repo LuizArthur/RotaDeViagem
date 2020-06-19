@@ -26,17 +26,16 @@ public class RouteWebApp extends HttpServlet {
 		final webapp.dto.BestRouteDto bestRouteDto = insertRotas(request, response);
 		
 		final PrintWriter out = response.getWriter();
-		out.println(JsonUtils.classToJson(bestRouteDto));
+		out.println(JsonUtils.classToJson(bestRouteDto.getBody()));
 	}
 	
 	private BestRouteDto insertRotas(final HttpServletRequest request, final HttpServletResponse response) {
 		final BestRouteAdapter adapter = new BestRouteAdapter();
 
 		try {
-			final String departureAirportCode = request.getParameter("departureAirportCode");
-            final String arrivalAirportCode = request.getParameter("arrivalAirportCode");
+			final String routeString = request.getParameter("route");
             
-            BestRoute bestRoute = routeAppService.getBestRoute(departureAirportCode, arrivalAirportCode);
+            BestRoute bestRoute = routeAppService.getBestRoute(routeString);
             
             return adapter.BestRouteToDto(bestRoute);
             

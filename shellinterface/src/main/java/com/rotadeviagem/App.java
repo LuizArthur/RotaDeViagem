@@ -8,6 +8,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class App 
 {
     public static void main(final String[] args) {
+    	String teste = "ajldlkjadjkd";
+    	
+    	String[] x = teste.split("-");
+    	System.out.println(x[1]);
+    	
+    	
         try {
             final String inputsPath = "/home/luizarthur/reposLuiz/RotaDeViagem/input-file.txt";
 //            		Inputs.getPathRotas(args);
@@ -21,7 +27,7 @@ public class App
             		continue;
             	}
             	JsonNode response = Http.get(iataCodes.get(0), iataCodes.get(1), inputsPath);
-            	System.out.println(response);
+            	System.out.println(response.get("body"));
             }
 
         } catch (final Exception e) {
