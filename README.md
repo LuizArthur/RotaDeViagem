@@ -1,20 +1,20 @@
 
 
 # Objetivo
-Esse programa possui duas Rest APis e um shell interface, onde é possível adicionar rotas de aeroporto em um arquivo csv e achar a rota mais barata
+Esse programa possui duas Rest APis e um shell interface, onde é possível adicionar rotas entre aeroportos em um arquivo .csv e encontrar a rota mais barata
 entre dois aeroportos.
 # Execução
 Para executar a aplicação você precisa ter instalado curl, docker e docker-compose.
-Entre na pasta dockere digite o seguinte comando:
+Entre na pasta docker e digite o seguinte comando:
 ```sh
 $ . shellinterface.sh completePathToInputFile
 ```
-Depois de iniciada a execução, o programa pedirá a rota, para o cálculo do menor custo, como shell input. O shell input deve obedecer o seguinte formato:
+Depois de iniciada a execução, o programa pedirá a rota, para o cálculo do menor custo, como shell input. O shell input deve obedecer o seguinte formato:  
 XXX-XXX => Exemplo: GRU-CDG
 
-Na root folder do projeto existe uma file exemplo chamada input-file.txt, cuja a estrutura é a seguinte:
-CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota
-CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota
+Na root folder do projeto existe uma file exemplo chamada input-file.txt, cuja a estrutura é a seguinte:  
+CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota  
+CodigoDoAeroporto,CodigoDoAeroporto,CustoDaRota  
 ...
 ##### Vale lembrar que para a execução apropriada do programa, o código do aeroporto deve obedecer o padrão [IATA](https://en.wikipedia.org/wiki/IATA_airport_code#:~:text=An%20IATA%20airport%20code%2C%20also,Air%20Transport%20Association%20(IATA).) (composto de três letras) e o custo não deve ser negativo . Isso vale tanto para os dados de entrada, assim como para o input no shell.
 
