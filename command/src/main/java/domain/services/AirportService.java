@@ -8,6 +8,10 @@ public class AirportService implements IAirportService{
 
 	@Override
 	public Airport getByIata(String iataCode) throws DomainRuleException {
+		if(iataCode == null) {
+			throw new DomainRuleException("Iata Code is not Valid");
+		}
+		
 		Airport airport = new Airport(iataCode);
 		SpecificationResult airportSpec = airport.isValid();
 		

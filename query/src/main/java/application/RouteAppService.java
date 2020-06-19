@@ -26,11 +26,23 @@ public class RouteAppService implements IRouteAppService{
 		return airportAppService;
 	}
 	
+	private String[] getIataCodes(String routeSring) {
+		String[] iataCodes = routeSring.replace(" ", "").split("-");
+		if(iataCodes.length != 2) {
+			return new String[] { null, null };
+		}
+		
+		return iataCodes;
+	}
+	
 	@Override
 	public BestRoute getBestRoute(
-		final String departureAirportCode,
-		final String arrivalAirportCode
-	) throws DomainRuleException  {		
+		final String routeString
+	) throws DomainRuleException  {
+		String[] iataCodes = this.getIataCodes(routeString);
+		String departureAirportCode = iataCodes[0];
+		String arrivalAirportCode = iataCodes[1];
+		
 		final Airport departureAirport = this.getAirportAppService().getByIata(departureAirportCode);
 		final Airport arrivalAirport = this.getAirportAppService().getByIata(arrivalAirportCode);
 		

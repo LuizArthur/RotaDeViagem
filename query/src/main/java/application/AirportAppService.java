@@ -20,7 +20,7 @@ public class AirportAppService implements IAirportAppService {
 	}
 
 	@Override
-	public Airport getByIata(String airportIataCode) throws DomainRuleException {
+	public Airport getByIata(String airportIataCode) throws DomainRuleException {		
 		return this.getAirportService().getByIata(airportIataCode);
 	}
 

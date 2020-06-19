@@ -1,7 +1,7 @@
 package infra.data;
 
 public class DataBaseFactory implements IDataBaseFactory{
-	final private String mode = "DEV"; 
+	final private String mode = "PROD"; 
 	
 	
 	@Override
@@ -10,7 +10,7 @@ public class DataBaseFactory implements IDataBaseFactory{
 			return "/home/luizarthur/reposLuiz/RotaDeViagem/input-file.txt";
 		}
 		
-		return null;
+		return "/app/input/input.csv";
 	}
 	
 }
