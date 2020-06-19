@@ -74,6 +74,3 @@ COPY /docker/input/input.csv /app/input/
 EXPOSE 8080
 
 CMD /opt/tomcat/bin/catalina.sh run
-
-
-
